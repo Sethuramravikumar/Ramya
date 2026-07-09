@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I am Sorry! 🥺</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffe6e6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            color: #d63031;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #636e72;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            height: 50px;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #yesBtn {
+            background-color: #2ed573;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #ff4757;
+            color: white;
+            position: absolute;
+        }
+
+        /* Animation effects */
+        .heart {
+            position: absolute;
+            color: #ff4757;
+            font-size: 24px;
+            animation: float Up 3s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainBox">
+        <h1 id="title">En mela innum kobama irukiya? 🥺</h1>
+        <p id="message">I am really sorry deep from my heart. Enna manichudriya?</p>
+        
+        <div class="btn-container">
+            <button id="yesBtn" onclick="forgiven()">Yes, Manichuten! ❤️</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No 😡</button>
+        </div>
+    </div>
+
+    <script>
+        // No button-ah thoda ponalum, click ponalum athu odidum
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            // Random-ah screen-la vera engayavadhu button move aagum
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 50);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 50);
+            
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        // Yes click panna varra magic
+        function forgiven() {
+            const title = document.getElementById('title');
+            const message = document.getElementById('message');
+            const btnContainer = document.querySelector('.btn-container');
+
+            title.innerText = "Thank You So Much! 😍";
+            message.innerText = "Nee thaan en ulagam! I Love You Line-la iru, treat ready panren! 😘❤️";
+            btnContainer.style.display = 'none'; // Buttons maranjidum
+
+            // Background-la hearts parakka viduvom
+            setInterval(createHeart, 300);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerText = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 2s + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
