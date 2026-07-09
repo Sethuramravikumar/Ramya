@@ -23,10 +23,9 @@
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 10;
             max-width: 400px;
             width: 90%;
+            box-sizing: border-box;
         }
 
         h1 {
@@ -45,9 +44,10 @@
         .btn-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            position: relative;
-            height: 50px;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+            min-height: 60px;
         }
 
         button {
@@ -57,7 +57,7 @@
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform 0.1s ease;
         }
 
         #yesBtn {
@@ -68,7 +68,7 @@
         #noBtn {
             background-color: #ff4757;
             color: white;
-            position: absolute; /* This fixes the positioning! */
+            z-index: 999;
         }
 
         /* Animation effects */
@@ -99,12 +99,18 @@
     </div>
 
     <script>
-        // No button-ah thoda ponalum, click ponalum athu odidum
+        // No button-ah touch ponalum, click ponalum screen full-ah enga vena odum
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
-            // Random-ah screen-la vera engayavadhu button move aagum
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 50);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 50);
+            
+            // First time move aagumpothu athoda position-ah absolute-ah mathiduvom
+            if (noBtn.style.position !== 'absolute') {
+                noBtn.style.position = 'absolute';
+            }
+            
+            // Screen boundaries-la mattum random-ah move aagum
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 40);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 40);
             
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
@@ -118,7 +124,7 @@
 
             title.innerText = "Thank You Ramya! 😍";
             message.innerText = "Nee kobama irundha enaku rathiri thookame varala తెரியாமா? You are my everything! En rathasame, I Love You! 😘❤️";
-            btnContainer.style.display = 'none'; // Buttons maranjidum
+            btnContainer.style.display = 'none'; // Buttons full-ah maranjidum
 
             // Background-la hearts parakka viduvom
             setInterval(createHeart, 300);
