@@ -26,7 +26,6 @@
             max-width: 400px;
             width: 90%;
             box-sizing: border-box;
-            position: relative;
         }
 
         h1 {
@@ -42,38 +41,32 @@
             line-height: 1.5;
         }
 
-        /* Buttons rendu perkum thoorama space ready panrom */
         .btn-container {
             display: flex;
-            justify-content: space-around;
-            align-items: center;
+            justify-content: center;
+            gap: 40px; /* Thoorama vachirukom */
             width: 100%;
-            min-height: 80px;
-            position: relative;
+            margin-top: 20px;
         }
 
         button {
-            padding: 12px 25px;
+            padding: 14px 28px;
             font-size: 1rem;
             font-weight: bold;
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            z-index: 10;
+            outline: none;
         }
 
         #yesBtn {
             background-color: #2ed573;
             color: white;
-            position: relative;
         }
 
-        /* Initial-ah No button flex layout-la thaniya nirkum, overlap aagathu */
         #noBtn {
             background-color: #ff4757;
             color: white;
-            position: relative;
-            transition: transform 0.1s ease;
         }
 
         /* Animation effects */
@@ -83,7 +76,6 @@
             font-size: 24px;
             animation: floatUp 3s linear infinite;
             opacity: 0;
-            z-index: 1;
         }
 
         @keyframes floatUp {
@@ -99,7 +91,6 @@
         <p id="message">En mela innum romba kobama irukiya? I am really very sorry deep from my heart. Enna manichudriya Ramya?</p>
         
         <div class="btn-container">
-            <!-- Yes button ippo pure-ah mela thaan iruku, touch aagum -->
             <button id="yesBtn" onclick="forgiven()">Yes, Manichuten! ❤️</button>
             <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No 😡</button>
         </div>
@@ -109,14 +100,12 @@
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
             
-            // First time move aagumpothu mattum body level position-ku absolute mathrom
-            if (noBtn.style.position !== 'absolute') {
-                noBtn.style.position = 'absolute';
-            }
+            // Layout crash aagama iruka, click panra second-la mattum absolute fix panrom
+            noBtn.style.position = 'fixed';
             
-            // Container-ku veliya screen muzhuka random-ah odum
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 40);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 40);
+            // Full screen viewport kulla enga vena random-ah odum
+            const x = Math.random() * (window.innerWidth - 120);
+            const y = Math.random() * (window.innerHeight - 50);
             
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
@@ -130,10 +119,10 @@
             title.innerText = "Thank You Ramya! 😍";
             message.innerText = "Nee kobama irundha enaku rathiri thookame varala తెரியாமா? You are my everything! En rathasame, I Love You! 😘❤️";
             
-            // Layout invisible aagidum
+            // Buttons full-ah maranjidum, layout clean aagidum
             btnContainer.style.display = 'none'; 
 
-            // Background hearts loop
+            // Hearts parakka vidrom
             setInterval(createHeart, 300);
         }
 
