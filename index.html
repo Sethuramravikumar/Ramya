@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I am Sorry! 🥺</title>
+    <title>Sorry Ramya! 🥺</title>
     <style>
         body {
             margin: 0;
@@ -25,6 +25,8 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             position: relative;
             z-index: 10;
+            max-width: 400px;
+            width: 90%;
         }
 
         h1 {
@@ -37,6 +39,7 @@
             color: #636e72;
             font-size: 1.1rem;
             margin-bottom: 30px;
+            line-height: 1.5;
         }
 
         .btn-container {
@@ -48,7 +51,7 @@
         }
 
         button {
-            padding: 12px 30px;
+            padding: 12px 25px;
             font-size: 1rem;
             font-weight: bold;
             border: none;
@@ -65,7 +68,7 @@
         #noBtn {
             background-color: #ff4757;
             color: white;
-            position: absolute;
+            position: absolute; /* This fixes the positioning! */
         }
 
         /* Animation effects */
@@ -73,7 +76,7 @@
             position: absolute;
             color: #ff4757;
             font-size: 24px;
-            animation: float Up 3s linear infinite;
+            animation: floatUp 3s linear infinite;
             opacity: 0;
         }
 
@@ -86,8 +89,8 @@
 <body>
 
     <div class="container" id="mainBox">
-        <h1 id="title">En mela innum kobama irukiya? 🥺</h1>
-        <p id="message">I am really sorry deep from my heart. Enna manichudriya?</p>
+        <h1 id="title">Ramya... Kutty Ma! 🥺</h1>
+        <p id="message">En mela innum romba kobama irukiya? I am really very sorry deep from my heart. Enna manichudriya Ramya?</p>
         
         <div class="btn-container">
             <button id="yesBtn" onclick="forgiven()">Yes, Manichuten! ❤️</button>
@@ -113,8 +116,8 @@
             const message = document.getElementById('message');
             const btnContainer = document.querySelector('.btn-container');
 
-            title.innerText = "Thank You So Much! 😍";
-            message.innerText = "Nee thaan en ulagam! I Love You Line-la iru, treat ready panren! 😘❤️";
+            title.innerText = "Thank You Ramya! 😍";
+            message.innerText = "Nee kobama irundha enaku rathiri thookame varala తెரியாமா? You are my everything! En rathasame, I Love You! 😘❤️";
             btnContainer.style.display = 'none'; // Buttons maranjidum
 
             // Background-la hearts parakka viduvom
