@@ -26,6 +26,7 @@
             max-width: 400px;
             width: 90%;
             box-sizing: border-box;
+            position: relative;
         }
 
         h1 {
@@ -41,13 +42,14 @@
             line-height: 1.5;
         }
 
+        /* Buttons rendu perkum thoorama space ready panrom */
         .btn-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
-            gap: 30px;
             width: 100%;
-            min-height: 60px;
+            min-height: 80px;
+            position: relative;
         }
 
         button {
@@ -57,18 +59,21 @@
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            transition: transform 0.1s ease;
+            z-index: 10;
         }
 
         #yesBtn {
             background-color: #2ed573;
             color: white;
+            position: relative;
         }
 
+        /* Initial-ah No button flex layout-la thaniya nirkum, overlap aagathu */
         #noBtn {
             background-color: #ff4757;
             color: white;
-            z-index: 999;
+            position: relative;
+            transition: transform 0.1s ease;
         }
 
         /* Animation effects */
@@ -78,6 +83,7 @@
             font-size: 24px;
             animation: floatUp 3s linear infinite;
             opacity: 0;
+            z-index: 1;
         }
 
         @keyframes floatUp {
@@ -93,22 +99,22 @@
         <p id="message">En mela innum romba kobama irukiya? I am really very sorry deep from my heart. Enna manichudriya Ramya?</p>
         
         <div class="btn-container">
-            <button id="yesBtn" onclick="forgiven()">Yes, Black! ❤️</button>
+            <!-- Yes button ippo pure-ah mela thaan iruku, touch aagum -->
+            <button id="yesBtn" onclick="forgiven()">Yes, Manichuten! ❤️</button>
             <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No 😡</button>
         </div>
     </div>
 
     <script>
-        // No button-ah touch ponalum, click ponalum screen full-ah enga vena odum
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
             
-            // First time move aagumpothu athoda position-ah absolute-ah mathiduvom
+            // First time move aagumpothu mattum body level position-ku absolute mathrom
             if (noBtn.style.position !== 'absolute') {
                 noBtn.style.position = 'absolute';
             }
             
-            // Screen boundaries-la mattum random-ah move aagum
+            // Container-ku veliya screen muzhuka random-ah odum
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 40);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 40);
             
@@ -116,17 +122,18 @@
             noBtn.style.top = y + 'px';
         }
 
-        // Yes click panna varra magic
         function forgiven() {
             const title = document.getElementById('title');
             const message = document.getElementById('message');
             const btnContainer = document.querySelector('.btn-container');
 
             title.innerText = "Thank You Ramya! 😍";
-            message.innerText = "Nee kobama irundha I can't see withu You Blacky you are my everything! Karupiiiii 😘❤️";
-            btnContainer.style.display = 'none'; // Buttons full-ah maranjidum
+            message.innerText = "Nee kobama irundha enaku rathiri thookame varala తెரியாமா? You are my everything! En rathasame, I Love You! 😘❤️";
+            
+            // Layout invisible aagidum
+            btnContainer.style.display = 'none'; 
 
-            // Background-la hearts parakka viduvom
+            // Background hearts loop
             setInterval(createHeart, 300);
         }
 
